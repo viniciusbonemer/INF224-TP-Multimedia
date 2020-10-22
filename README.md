@@ -35,3 +35,8 @@ Seulement Film. C'est la seule classe qui a des pointeurs.
 
 #### De même, la copie d'objets peut poser problème dans certains cas. Pourquoi et que faudrait-il faire ?
 Si on fait une copie superficielle deux objets ont une référence à un seule objet. Si un des deux modifie cet objet, on peut avoir un comportement étrange. En certaines situations, ce qu'on veut faire c'est une copie profonde pour garantir que les deux objets sont indépendents.
+
+### 8e Étape
+
+#### On rappelle aussi que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java.
+Si on fait une liste d'objets, les objets seront copiés dans la liste. Ce qu'on veut est d'avoir une reference pour qu'on puisse avoir le même objet referencé en plusieurs endroits.
