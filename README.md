@@ -25,13 +25,13 @@ Le tableau contient des pointeurs vers les objets. On ne peut pas créer un tabl
 
 ### 6e Étape
 
-#### Que faut-il faire pour que l'objet Film ait plein contrôle sur ses données et que son tableau de durées des chapitres ne puisse pas être modifié (ou pire, détruit) à son insu ? (c'est l'objet qui doit pouvoir modifier ce qui lui appartient, pas les autres !)
+#### Que faut-il faire pour que l'objet `Film` ait plein contrôle sur ses données et que son tableau de durées des chapitres ne puisse pas être modifié (ou pire, détruit) à son insu ? (c'est l'objet qui doit pouvoir modifier ce qui lui appartient, pas les autres !)
 Il faut que le modifieur n'utilise pas le tableau passé comme parametre, mais qu'il crée un nouveau tableau avec le même contenu.
 
 ### 7e Étape
 
 #### Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ?
-Seulement Film. C'est la seule classe qui a des pointeurs.
+Seulement `Film`. C'est la seule classe qui a des pointeurs.
 
 #### De même, la copie d'objets peut poser problème dans certains cas. Pourquoi et que faudrait-il faire ?
 Si on fait une copie superficielle deux objets ont une référence à un seule objet. Si un des deux modifie cet objet, on peut avoir un comportement étrange. En certaines situations, ce qu'on veut faire c'est une copie profonde pour garantir que les deux objets sont indépendents.
@@ -40,3 +40,9 @@ Si on fait une copie superficielle deux objets ont une référence à un seule o
 
 #### On rappelle aussi que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java.
 Si on fait une liste d'objets, les objets seront copiés dans la liste. Ce qu'on veut est d'avoir une reference pour qu'on puisse avoir le même objet referencé en plusieurs endroits.
+
+### 11e Étape
+
+#### Votre méthode processRequest() devra pouvoir accéder aux données de la classe créée à la question précédente (`MultimediaFactory`). Sachant que cette méthode peut appartenir à n'importe quelle classe, quelle est la solution la plus simple ?
+
+La solution la plus simple est de créer une nouvelle classe qui traite les requests et appelle les méthodes qu'il faut. 

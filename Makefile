@@ -1,25 +1,27 @@
-SOURCES := $(wildcard *.cpp)
-OBJS := $(patsubst %.cpp,%.o,$(notdir $(SOURCES)))
-
 CXX := c++
 CXXFLAGS := -std=c++11 -Wall -Werror -g
 
-LDLIBS :=
+LDLIBS := -lpthread
 LDFLAGS :=
 
-EXE := main
-DEPEND := $(subst .cpp,.d,$(SOURCES))
+SERVER := server
+CLIENT := client
 
 DOCS := docs
 
 RM := rm -rf
 
-all : $(EXE)
+SOURCES := $(wildcard *.cpp)
+OBJS := $(patsubst %.cpp,%.o,$(notdir $(SOURCES)))
 
-run : $(EXE)
-	./$(EXE)
+DEPEND := $(subst .cpp,.d,$(SOURCES))
 
-$(EXE) : $(OBJS)
+all : $(SERVER) $(CLIENT)
+
+$(SERVER) : OBJS := $(filter-out $(CLIENT).o, $(OBJS))
+$(CLIENT) : OBJS := $(filter-out $(SERVER).o, $(OBJS))
+
+$(SERVER) $(CLIENT) : $(OBJS)
 	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${OBJS} ${LDLIBS}
 
 # -M : Like -MD, but also implies -E and writes to stdout by default
@@ -32,12 +34,12 @@ $(EXE) : $(OBJS)
 %.d : %.cpp
 	@$(CXX) $(CXXFLAGS) -MM -MF $@ -MP $<
 
-.PHONY : docs clean
+.PHONY : all docs clean
 
 docs :
 	@( cat Doxyfile ; echo "OUTPUT_DIRECTORY=$(DOCS)" ) | doxygen - > /dev/null 2>&1 && echo "Documentation generated at $(DOCS)"
 
 clean :
-	@$(RM) $(OBJS) $(EXE) $(DEPEND)
+	@$(RM) $(OBJS) $(SERVER) $(CLIENT) $(DEPEND)
 
 -include $(DEPEND)
