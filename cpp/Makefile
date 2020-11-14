@@ -1,5 +1,5 @@
 CXX := c++
-CXXFLAGS := -std=c++11 -Wall -Werror -g
+CXXFLAGS := -std=c++11 -Wall -Werror -g -O2
 
 LDLIBS := -lpthread
 LDFLAGS :=
@@ -17,6 +17,9 @@ OBJS := $(patsubst %.cpp,%.o,$(notdir $(SOURCES)))
 DEPEND := $(subst .cpp,.d,$(SOURCES))
 
 all : $(SERVER) $(CLIENT)
+
+run : $(SERVER)
+	./$(SERVER)
 
 $(SERVER) : OBJS := $(filter-out $(CLIENT).o, $(OBJS))
 $(CLIENT) : OBJS := $(filter-out $(SERVER).o, $(OBJS))

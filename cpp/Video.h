@@ -46,6 +46,6 @@ public:
 };
 
 /// Type used to refer to a shared pointer to Video
-typedef std::shared_ptr<Video> VideoPtr;
+using VideoPtr = std::shared_ptr<Video>;
 
 #endif

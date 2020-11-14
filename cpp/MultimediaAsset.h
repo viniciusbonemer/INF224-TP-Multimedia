@@ -78,6 +78,6 @@ public:
 };
 
 /// Type used to refer to a shared pointer to MultimediaAsset
-typedef std::shared_ptr<MultimediaAsset> MultimediaAssetPtr;
+using MultimediaAssetPtr = std::shared_ptr<MultimediaAsset>;
 
 #endif

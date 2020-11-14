@@ -44,6 +44,6 @@ public:
 };
 
 /// Type used to refer to a shared pointer to MultimediaGroup
-typedef std::shared_ptr<MultimediaGroup> MultimediaGroupPtr;
+using MultimediaGroupPtr = std::shared_ptr<MultimediaGroup>;
 
 #endif

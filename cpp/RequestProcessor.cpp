@@ -2,11 +2,11 @@
 #include "RequestProcessor.h"
 
 RequestProcessor::RequestProcessor():
-	factory(new MultimediaFactory())
+	factory(std::make_shared<MultimediaFactory>())
 	{ }
 
 RequestProcessor::~RequestProcessor() {
-	delete factory;
+	factory.reset();
 }
 
 bool RequestProcessor::processRequest(cppu::TCPConnection& connection, const std::string& request, std::string& response) {
@@ -28,7 +28,7 @@ bool RequestProcessor::processRequest(cppu::TCPConnection& connection, const std
 	} else if (op == "da") {
 		processDisplayAssetRequest(connection, stream, responseStream);
 	} else {
-		responseStream << "Error. Syntax: <op>:<parameters>, where <op>='ca'|'cg'|'sa'|'sg'|'da'";
+		responseStream << "Error. Syntax: <op>:<parameters>, where <op>='pa'|'pg'|'da'";
 	}
 
 	response = responseStream.str();

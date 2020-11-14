@@ -79,6 +79,6 @@ public:
 };
 
 /// Type used to refer to a shared pointer to Film
-typedef std::shared_ptr<Film> FilmPtr;
+using FilmPtr = std::shared_ptr<Film>;
 
 #endif

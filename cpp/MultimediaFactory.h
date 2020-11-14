@@ -96,4 +96,7 @@ public:
 
 };
 
+/// Type used to refer to a shared pointer to MultimediaFactory
+using MultimediaFactoryPtr = std::shared_ptr<MultimediaFactory>;
+
 #endif

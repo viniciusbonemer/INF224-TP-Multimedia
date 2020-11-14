@@ -66,6 +66,6 @@ public:
 };
 
 /// Type used to refer to a shared pointer to Photo
-typedef std::shared_ptr<Photo> PhotoPtr;
+using PhotoPtr = std::shared_ptr<Photo>;
 
 #endif

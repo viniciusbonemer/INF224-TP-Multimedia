@@ -12,7 +12,7 @@
 class RequestProcessor {
 
 private:
-	MultimediaFactory *factory;
+	MultimediaFactoryPtr factory;
 
 	void performOperation(std::string&, const std::string&, std::stringstream&);
 
@@ -37,6 +37,8 @@ public:
 	RequestProcessor();
 
 	virtual ~RequestProcessor();
+
+	MultimediaFactoryPtr getFactory() const { return factory; }
 
 	/* Cette méthode est appelée chaque fois qu'il y a une requête à traiter.
 	* Ca doit etre une methode de la classe qui gere les données, afin qu'elle

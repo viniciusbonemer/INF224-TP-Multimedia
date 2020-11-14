@@ -14,6 +14,8 @@ int main(int argc, char* argv[]) {
 
 	// cree l'objet qui gère les données
 	std::shared_ptr<RequestProcessor> requestProcessor(new RequestProcessor());
+	// MultimediaFactoryPtr factory = requestProcessor->getFactory();
+	// factory->createPhoto("Photo", "~/Downloads/Photo.jpg");
 
 	// le serveur appelera cette méthode chaque fois qu'il y a une requête
 	server->setCallback(*requestProcessor, &RequestProcessor::processRequest);
