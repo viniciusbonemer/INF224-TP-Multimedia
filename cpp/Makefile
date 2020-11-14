@@ -37,7 +37,7 @@ $(SERVER) $(CLIENT) : $(OBJS)
 %.d : %.cpp
 	@$(CXX) $(CXXFLAGS) -MM -MF $@ -MP $<
 
-.PHONY : all docs clean
+.PHONY : all run docs clean
 
 docs :
 	@( cat Doxyfile ; echo "OUTPUT_DIRECTORY=$(DOCS)" ) | doxygen - > /dev/null 2>&1 && echo "Documentation generated at $(DOCS)"
