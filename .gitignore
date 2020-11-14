@@ -1,4 +1,23 @@
 
+# Ignore all
+*
+
+# Unignore all dirs
+!/**/
+
+# Unignore all with extensions
+!*.*
+
+### Above combination will ignore all files without extension ###
+# From: https://stackoverflow.com/questions/5711120/gitignore-without-binary-files
+# And: https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign/19023985#19023985
+
+# Unignore Makefile
+!Makefile
+
+# Unignore Doxyfile
+!Doxyfile
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,vim,c++,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,vim,c++,java
 
