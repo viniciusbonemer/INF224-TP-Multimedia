@@ -44,7 +44,7 @@ bool RequestProcessor::processPrintAssetRequest(cppu::TCPConnection& connection,
 	std::string name;
 	getline(parameters, name, ':');
 
-	auto lock = std::make_shared<cppu::TCPLock>(connection, true);
+	auto lock = std::make_shared<cppu::TCPLock>(connection, false);
 	factory->printAsset(name, responseStream);
 	lock.reset();
 
@@ -57,7 +57,7 @@ bool RequestProcessor::processPrintGroupRequest(cppu::TCPConnection& connection,
 	std::string name;
 	std::getline(parameters, name, ':');
 
-	auto lock = std::make_shared<cppu::TCPLock>(connection, true);
+	auto lock = std::make_shared<cppu::TCPLock>(connection, false);
 	factory->printGroup(name, responseStream);
 	lock.reset();
 
@@ -70,7 +70,7 @@ bool RequestProcessor::processDisplayAssetRequest(cppu::TCPConnection& connectio
 	std::string name;
 	std::getline(parameters, name, ':');
 
-	auto lock = std::make_shared<cppu::TCPLock>(connection, true);
+	auto lock = std::make_shared<cppu::TCPLock>(connection, false);
 	factory->displayAsset(name, responseStream);
 	lock.reset();
 

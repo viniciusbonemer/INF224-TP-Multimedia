@@ -8,11 +8,15 @@ Video::Video(std::string name, std::string filePath, int duration):
 
 void Video::printTo(std::ostream& stream) const {
 	stream << "Name: " << name << " File path: " << filePath << " Duration: "
-	<< duration << std::endl;
+	<< duration;
 }
 
 void Video::display() const {
+	#if defined(__APPLE__)
 	std::string cmd = "open " + filePath + " &";
+	#else
+	std::string cmd = "mpv " + filePath + " &";
+	#endif
 	system(cmd.c_str());
 }
 

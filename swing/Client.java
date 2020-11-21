@@ -47,7 +47,7 @@ public final class Client {
 		System.out.print("Request: " + request);
 
 		String response = send(request);
-		System.out.println("Response: " + response);
+		System.out.println(" Response: " + response);
 
 		EventDispatcher.instance.triggerEvent(new ResponseReceivalEvent(response));
 	}

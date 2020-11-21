@@ -12,9 +12,9 @@ MultimediaGroup::~MultimediaGroup() {
 }
 
 void MultimediaGroup::printTo(std::ostream& stream) const {
-	stream << name << std::endl;
+	stream << name << " -> ";
 	for (auto & el : *this) {
-		stream << "\t";
 		el->printTo(stream);
+		stream << ", ";
 	}
 }

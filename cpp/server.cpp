@@ -20,6 +20,16 @@ int main(int argc, char* argv[]) {
 	// le serveur appelera cette méthode chaque fois qu'il y a une requête
 	server->setCallback(*requestProcessor, &RequestProcessor::processRequest);
 
+	// Populate the factory
+	{
+		auto factory = requestProcessor->getFactory();
+		auto photo = factory->createPhoto("image", "sample_assets/image.png");
+		auto video = factory->createVideo("video", "sample_assets/video.mov");
+		auto group = factory->createGroup("all");
+		group->push_back(photo);
+		group->push_back(video);
+	}
+
 	// lance la boucle infinie du serveur
 	std::cout << "Starting Server on port " << PORT << std::endl;
 	int status = server->run(PORT);

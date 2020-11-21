@@ -47,5 +47,5 @@ void Film::printTo(std::ostream& stream) const {
 	for (int i = 1; i < chaptersCount; ++i) {
 		stream << chapterDurations[i - 1]  << ", ";
 	}
-	stream << chapterDurations[chaptersCount - 1] << std::endl;
+	stream << chapterDurations[chaptersCount - 1];
 }
